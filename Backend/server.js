@@ -1,6 +1,7 @@
 //imports
 require("dotenv").config();
 const express = require("express");
+const mongoose = require("mongoose");
 
 const authRouter = require("./auth.js");
 const usersRouter = require("./users.js");
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 9000;
 
 //initialization
 const app = express();
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true});
 
 //routes
 

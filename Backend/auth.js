@@ -1,24 +1,17 @@
+require("dotenv").config();
+
 const express = require("express");
 const router = express.Router();
-const {Client} = require("pg");
-const dbObject = require("./databaseObject.js");
+const mongoose = require("mongoose");
+
+const users = require("./models/users");
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
 //Authentication endpoints
-
 router.post("/login", (req, res)=>{
-
-	const client = new Client(dbObject);
-	client.connect();
-
-	client.query("SELECT NOW()")
-	.then((res)=>{
-		console.log(res);
-		client.end();
-	})
-	.catch(error=>{
-		console.log(error);
-		client.end()
-	})
-
+	
 });
 
 router.post("/signup", (req, res)=>{
@@ -28,6 +21,16 @@ router.post("/signup", (req, res)=>{
 		//Email is proper
 		//Phone number
 	//Insert the table.
+
+	var newUser = new users({full_name:"Sai Kiran", email:"bsaikiran618@gmail.com",password_hash:"asasdasdasd", phone:"8790805406", karma:0});
+	newUser.save()
+	.then(savedDoc =>{
+		console.log("Document saved!");
+		res.send("yaAAYY CoooLLL")
+	})
+	.catch(err=>{
+		console.log(err);
+	})
 
 });
 
