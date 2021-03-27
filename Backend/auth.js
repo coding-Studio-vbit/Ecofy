@@ -6,9 +6,6 @@ const dbObject = require("./databaseObject.js");
 
 router.post("/login", (req, res)=>{
 
-
-	console.log(JSON.stringify(dbObject)); //DEBUG
-
 	const client = new Client(dbObject);
 	client.connect();
 
@@ -25,7 +22,13 @@ router.post("/login", (req, res)=>{
 });
 
 router.post("/signup", (req, res)=>{
-	
+
+	//Validate the data.
+		// Passwords are matching
+		//Email is proper
+		//Phone number
+	//Insert the table.
+
 });
 
 module.exports = router;
