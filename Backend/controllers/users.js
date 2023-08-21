@@ -1,8 +1,8 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
-const users = require("./models/users");
+const users = require("../models/users");
 const router = express.Router()
-const tokenAuth = require("./tokenAuth");
+const tokenAuth = require("../tokenAuth");
 
 router.use(tokenAuth); //All user management endpoints are token authenticated
 //User endpoints
